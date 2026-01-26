@@ -4,7 +4,7 @@
         "module": "node16",
         "moduleResolution": "node16",
         "rootDir": "./src",
-        "outDir": "src/dist",
+        "outDir": "dist",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -17,6 +17,6 @@
         "jsx": "react",
         
     },
-    "include": ["src", "src/config"],
-    "exclude": ["src/node_modules", "src/dist"]
+    "include": ["src", "src/config", "dist"],
+    "exclude": ["src/node_modules", "dist"]
 }

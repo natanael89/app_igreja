@@ -7,6 +7,7 @@
   "main": "src/dist/server.js",
   "scripts": {
     "start": "node src/dist/server.js",
+    "start:prod": "node dist/serve.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc /dist/server.js"
     

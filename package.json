@@ -4,11 +4,12 @@
   "description": "stream de curso",
   "license": "ISC",
   "author": "",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
+    "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "build": "tsc"
+    
   },
   "dependencies": {
     "@adminjs/design-system": "^2.2.4",

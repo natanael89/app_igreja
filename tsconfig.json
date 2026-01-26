@@ -4,7 +4,7 @@
         "module": "node20",
         "moduleResolution": "node16",
         "rootDir": "./src",
-        "outDir": "./dist",
+        "outDir": "src/dist",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -18,5 +18,5 @@
         
     },
     "include": ["src", "src/config"],
-    "exclude": ["src/node_modules", "dist"]
+    "exclude": ["src/node_modules", "src/dist"]
 }

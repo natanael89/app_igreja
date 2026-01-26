@@ -23,7 +23,7 @@ app.use(adminJs.options.rootPath, adminJsRouter)
 
 app.use(router)
 
-const PORT = Number(process.env.PORT) || 4000
+const PORT = Number(process.env.PORT) || 5000
 
 app.listen(PORT, () => {
     database.authenticate().then(() => {

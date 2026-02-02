@@ -5,7 +5,7 @@
   "type": "commonjs",
   "license": "ISC",
   "author": "",
-  "main": "index.js",
+  "main": "server.ts",
   "engines": {
     "node": "18.x"
   },

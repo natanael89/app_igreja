@@ -1,7 +1,7 @@
 import AdminJS, { PageHandler} from "adminjs";
 import { Category, DailyPost, Video, User } from "../models";
-import Dashboard from "./components/Dashboard";
-import { Components } from "./componentLoader";
+import { Components, componentLoader } from "./componentLoader";
+
 
 export const dashboardOptions: {
     handler?: PageHandler

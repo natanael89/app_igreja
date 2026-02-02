@@ -1,4 +1,4 @@
-import express from 'express'
+import * as express from 'express'
 import { categoriesController } from './controllers/categories.controller'
 import { dailyPostController } from './controllers/dailyPost.controller'
 import { videoController } from './controllers/video.controller'
@@ -7,7 +7,7 @@ import { authController } from './controllers/auth.controller'
 import { ensureAuth } from './middlewares/auth'
 import { likesController } from './controllers/likes.controller'
 import { usersController } from './controllers/users.controller'
-import { galleryController } from './controllers/gallery.controller'
+
 
 const router = express.Router()
 
@@ -16,10 +16,6 @@ router.post('/auth/login', authController.login)
 
 router.get('/categories', ensureAuth, categoriesController.index)
 router.get('/categories/:id', ensureAuth, categoriesController.show)
-
-router.get('/galleries', galleryController.index)
-router.get('/galleries/category/:categoryId', galleryController.showByCategory)
-router.get('/galleries/:id', galleryController.show)
 
 router.get('/daily-posts', dailyPostController.index)
 router.get('/daily-posts/featured', dailyPostController.featured)

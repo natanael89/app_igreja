@@ -23,11 +23,11 @@ app.use(adminJs.options.rootPath, adminJsRouter)
 
 app.use(router)
 
-const PORT = Number(process.env.PORT) || 5000
+const PORT = 4000
 
 app.listen(PORT, () => {
     database.authenticate().then(() => {
         console.log('DB connection successfull.')
     })
-    console.log(`Server started successfuly at port http://localhost:${PORT}/admin`)
+    console.log(`Server started successfuly at port http://localhost:${PORT}`)
 })

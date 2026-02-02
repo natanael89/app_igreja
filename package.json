@@ -2,23 +2,24 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "stream de curso",
+  "type": "commonjs",
   "license": "ISC",
   "author": "",
-  "main": "src/dist/server.js",
+  "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "start:prod": "node dist/serve.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc ./dist/server.js",
-    "start": "node ./dist/server.js"
-    
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
-    "@adminjs/design-system": "^2.2.4",
-    "@adminjs/express": "^5.1.0",
-    "@adminjs/sequelize": "^3.0.0",
-    "@adminjs/upload": "^4.0.2",
-    "adminjs": "^7.8.17",
-    "bcrypt": "^6.0.0",
+    "@adminjs/design-system": "^4.1.1",
+    "@adminjs/express": "~5.1.0",
+    "@adminjs/sequelize": "~2.1.0",
+    "@adminjs/upload": "~3.0.1",
+    "adminjs": "~6.8.7",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",

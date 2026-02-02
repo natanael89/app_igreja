@@ -1,4 +1,4 @@
-import { ResourceOptions, FeatureType, ActionResponse, ActionRequest, ActionContext } from "adminjs";
+import { ResourceOptions, FeatureType} from "adminjs";
 import path from "path";
 import uploadFileFeature from "@adminjs/upload";
 // import { generateVideoThumbnail } from "../../utils/upload/generateVideoThumbnail";
@@ -42,6 +42,7 @@ export const VideoResourceFeatures: FeatureType[] = [
         provider: {
             local: {
                 bucket: path.join(__dirname, "../../../uploads"),
+                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {
@@ -51,13 +52,14 @@ export const VideoResourceFeatures: FeatureType[] = [
             filePath: "videoFilePath",
             filesToDelete: "videoFilesToDelete",
         },
-        uploadPath: (record, filename) => 
-            `videos/video-${record.get("id")}/${filename}`
+        uploadPath: (record, filename) => `videos/video-${record.get("id")}/${filename}`,
+        
     }),
     uploadFileFeature({
         provider: {
             local: {
                 bucket: path.join(__dirname, "../../../uploads"),
+                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {

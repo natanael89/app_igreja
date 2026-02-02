@@ -6,9 +6,10 @@ import { adminJsResources } from "./resources"
 import bcryptjs from "bcryptjs"
 import { authetenticationOptions } from "./authentication"
 import { dashboardOptions } from "./dashboard"
-
 import { componentLoader, Components } from "./componentLoader"
 import { locale } from "./locale"
+
+
 
 AdminJS.registerAdapter({
     Resource: AdminJSSequelize.Resource,
@@ -32,12 +33,12 @@ export const adminJs = new AdminJS({
                  primary300: '#1e8449',
             }
         }
-    }
+    },
 })
 
 export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
     adminJs, 
     authetenticationOptions, 
     null,
-    { resave: false, saveUninitialized: false, secret: 'cafe'}
+    { resave: false, saveUninitialized: false, secret: process.env.JWT_SECRET as string}
 )

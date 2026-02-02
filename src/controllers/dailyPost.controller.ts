@@ -17,7 +17,7 @@ export const dailyPostController = {
     },
 
     show: async (req: Request, res: Response) => {
-        const { id } = req.params
+        const id  = req.params.id as string
 
         try {
             const post = await dailyPostService.findById(id)

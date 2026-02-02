@@ -5,8 +5,7 @@ import { Favorite } from "./Favorite";
 import { Like } from "./Like";
 import { User } from "./User";
 import { WatchTimes } from "./WatchTimes";
-import { Gallery } from "./Gallery";
-import { Gallery_Image } from "./Gallery_Images";
+
 
 /*
     CATEGORY = DAILY POST  
@@ -36,27 +35,6 @@ Video.belongsTo(Category, {
     foreignKey: "category_id"
 });
 
-
-
-Category.hasMany(Gallery, {
-    as: "gallery",
-    foreignKey: "category_id"
-});
-
-Gallery.belongsTo(Category, {
-    as: "category",
-    foreignKey: "category_id",
-})
-
-Gallery.hasMany(Gallery_Image, {
-    as: "gallery_images",
-    foreignKey: "gallery_id"
-})
-
-Gallery_Image.belongsTo(Gallery, {
-    as: "gallery",
-    foreignKey: "gallery_id"
-})
 
 /*
     DAILY POST = USER (LIKES)
@@ -145,5 +123,5 @@ export {
     Favorite,
     Like,
     User,
-    WatchTimes, Gallery, Gallery_Image
+    WatchTimes,
 };

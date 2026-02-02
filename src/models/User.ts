@@ -24,7 +24,6 @@ export interface UserCreationAttributes extends Optional<UserAttributes, 'id' | 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     checKPassword!: (password: string, callbackfn: CheckPasswordCallback) => void
 
-
     public id!: number;
     public firstName!: string;
     public lastName!: string;
@@ -37,6 +36,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public updated_at?: Date;
     Episodes?: Episode[];
     watchedVideos?: Video[];
+    static password: any;
 
 }
 
@@ -79,7 +79,10 @@ User.init(
         role: {
             allowNull: false,
             type: DataTypes.STRING,
-            defaultValue: 'user'
+            defaultValue: 'user',
+            validate: {
+                isIn: [['admin', 'user']]
+            }
         },
     },
     {

@@ -1,6 +1,7 @@
 import { AuthenticationOptions } from "@adminjs/express";
 import { User } from "../models";
-import bcryptjs from "bcryptjs"
+import bcryptjs from "bcryptjs";
+import "dotenv/config"
 
 export const authetenticationOptions: AuthenticationOptions = {
     authenticate: async (email, password) => {
@@ -16,5 +17,5 @@ export const authetenticationOptions: AuthenticationOptions = {
 
         return false
     },
-    cookiePassword: 'cafe'
+    cookiePassword: process.env.JWT_SECRET as string
 }

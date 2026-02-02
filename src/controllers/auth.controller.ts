@@ -35,6 +35,12 @@ export const authController = {
     login: async (req: Request, res: Response) => {
         const { email, password } = req.body
 
+        if(!email || !password){
+            return res.status(400).json({
+                message: "Email e senha são obrigatórios"
+            })
+        }
+
         try {
             const user = await userService.findByEmail(email)
 
@@ -57,7 +63,7 @@ export const authController = {
                     email: user.email,
                 }
 
-                const token = jwtService.signToken(payload, '7d')
+                const token = jwtService.signToken(payload, '30d')
 
                 return res.status(200).json({authenticated: true, ...payload, token})
             })

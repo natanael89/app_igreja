@@ -27,6 +27,12 @@ exports.DailyPostResourceOptions = {
         "title",
         "featured",
         "createdAt",
+        "updatedAt"
+    ],
+    listProperties: [
+        "id",
+        "title",
+        "createdAt"
     ],
     showProperties: [
         "id",
@@ -36,6 +42,7 @@ exports.DailyPostResourceOptions = {
         "featured",
         "category_id",
         "createdAt",
+        "updatedAt"
     ]
 };
 exports.DailyPostResourceFeatures = [
@@ -49,7 +56,7 @@ exports.DailyPostResourceFeatures = [
             key: "image_url",
             file: "uploadImage",
         },
-        uploadPath: (record, filename) => `daily-posts/${record.get("id")}/${filename}`,
+        uploadPath: (record, filename) => `daily-posts/post-${record.get("id")}/${filename}`,
     })
 ];
 //# sourceMappingURL=dailypost.js.map

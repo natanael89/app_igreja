@@ -19,7 +19,7 @@ export class DailyPost extends Model<DailyPostAttributes, DailyPostCreationAttri
     public title!: string;
     public content!: string;
     public image_url?: string;
-    public featured?: boolean;
+    public featured!: boolean;
     public category_id!: number;
 
     public readonly created_at?: Date;

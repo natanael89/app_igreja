@@ -24,6 +24,12 @@ export const DailyPostResourceOptions: ResourceOptions = {
         "title",
         "featured",
         "createdAt",
+        "updatedAt"
+    ],
+    listProperties:[
+        "id",
+        "title",
+        "createdAt"
     ],
     showProperties: [
         "id",
@@ -33,6 +39,7 @@ export const DailyPostResourceOptions: ResourceOptions = {
         "featured",
         "category_id",
         "createdAt",
+        "updatedAt"
     ]
 }
 
@@ -47,6 +54,6 @@ export const DailyPostResourceFeatures: FeatureType[] = [
             key: "image_url",
             file: "uploadImage",
         },
-        uploadPath: (record, filename) => `daily-posts/${record.get("id")}/${filename}`,
+        uploadPath: (record, filename) => `daily-posts/post-${record.get("id")}/${filename}`,
     })
 ]

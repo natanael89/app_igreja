@@ -1,10 +1,12 @@
 import { Sequelize } from "sequelize";
-import { DATABASE_URL, NODE_ENV } from "../config/env";
+import { DATABASE_URL } from "../config/env";
 
+if(!DATABASE_URL){
+   throw new Error("DATABASE_URL is not defined")
+}
 
 export const database = new Sequelize(DATABASE_URL, { 
    dialect: 'postgres',
-   logging: false,
    dialectOptions: {
       ssl: {
          require: true,

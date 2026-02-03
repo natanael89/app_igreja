@@ -5,6 +5,10 @@ if (process.env.NODE_ENV !== 'production'){
     dotenv.config()
 }
 
-export const DATABASE_URL = process.env.DATABASE_URL || ""
-export const JWT_SECRET = process.env.JWT_SECRET || ""
+if(!process.env.DATABASE_URL){
+    throw new Error("A variável DATABSE_URL está faltando no ambiente!")
+}
+
+export const DATABASE_URL = process.env.DATABASE_URL;
+export const JWT_SECRET = process.env.JWT_SECRET || "default_secret"
 export const NODE_ENV = process.env.NODE_ENV || "development"

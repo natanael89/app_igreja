@@ -24,6 +24,6 @@ app.listen(PORT, () => {
     database_1.database.authenticate().then(() => {
         console.log('DB connection successfull.');
     });
-    console.log(`Server started successfuly at port http://localhost:${PORT}`);
+    console.log(`Server started successfuly at port http://localhost:${PORT}/admin`);
 });
 //# sourceMappingURL=server.js.map

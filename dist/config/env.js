@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 if (!process.env.DATABASE_URL) {
     throw new Error("A variável DATABSE_URL está faltando no ambiente!");
 }
-exports.DATABASE_URL = "postgresql://igreja_db_gtdt_user:cTDD2zjE0259SAShBU6RNInbkg6OYoi1@dpg-d5rqlcngi27c73f6rdg0-a.ohio-postgres.render.com:5432/igreja_db_gtdt;";
+exports.DATABASE_URL = process.env.DATABASE_URL;
 exports.JWT_SECRET = process.env.JWT_SECRET || "default_secret";
 exports.NODE_ENV = process.env.NODE_ENV || "development";
 //# sourceMappingURL=env.js.map

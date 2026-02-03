@@ -42,7 +42,7 @@ exports.DailyPostResourceFeatures = [
     (0, upload_1.default)({
         provider: {
             local: {
-                bucket: path_1.default.join(__dirname, "../../../uploads"),
+                bucket: path_1.default.join(__dirname, "..", "..", "..", "uploads"),
                 opts: {
                     baseUrl: '/uploads'
                 }
@@ -52,7 +52,7 @@ exports.DailyPostResourceFeatures = [
             key: "image_url",
             file: "uploadImage",
         },
-        uploadPath: (record, filename) => `daily-posts/post-${record.get("id")}/${filename}`,
+        uploadPath: (record, filename) => `daily-posts/${record.get("id")}/${filename}`,
     })
 ];
 //# sourceMappingURL=dailypost.js.map

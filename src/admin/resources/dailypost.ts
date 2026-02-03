@@ -40,7 +40,7 @@ export const DailyPostResourceFeatures: FeatureType[] = [
     uploadFileFeature({
         provider: {
             local: {
-                bucket: path.join(__dirname, "../../../uploads"),
+                bucket: path.join(__dirname, "..", "..", "..", "uploads"),
                 opts: {
                     baseUrl: '/uploads'
                 }
@@ -50,6 +50,6 @@ export const DailyPostResourceFeatures: FeatureType[] = [
             key: "image_url",
             file: "uploadImage",
         },
-        uploadPath: (record, filename) => `daily-posts/post-${record.get("id")}/${filename}`,
+        uploadPath: (record, filename) => `daily-posts/${record.get("id")}/${filename}`,
     })
 ]

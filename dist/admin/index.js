@@ -93,7 +93,7 @@ exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.admin
     cookiePassword: env_1.ADMINJS_COOKIE_PASSWORD
 }, null, {
     store: sessionStore,
-    secret: env_1.ADMINJS_COOKIE_PASSWORD,
+    secret: env_1.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {

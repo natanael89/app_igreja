@@ -71,7 +71,7 @@ export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
     null,
     { 
         store: sessionStore,
-        secret: ADMINJS_COOKIE_PASSWORD as string,
+        secret: JWT_SECRET,
         resave: false, 
         saveUninitialized: false,
         cookie: {

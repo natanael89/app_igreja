@@ -7,7 +7,6 @@ exports.jwtService = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const env_1 = require("../config/env");
 require("dotenv/config");
-const secret = String(process.env.JWT_SECRET);
 exports.jwtService = {
     signToken: (payload, expiration) => {
         return jsonwebtoken_1.default.sign(payload, env_1.JWT_SECRET, { expiresIn: expiration });

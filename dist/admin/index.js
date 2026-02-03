@@ -89,17 +89,11 @@ exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.admin
         }
         return false;
     },
-    cookieName: 'adminjs',
     cookiePassword: env_1.ADMINJS_COOKIE_PASSWORD
 }, null, {
     store: sessionStore,
     secret: env_1.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        secure: env_1.NODE_ENV === 'production',
-        sameSite: 'lax'
-    }
 });
 //# sourceMappingURL=index.js.map

@@ -65,7 +65,6 @@ export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
         
                 return false
             },
-        cookieName: 'adminjs',
         cookiePassword: ADMINJS_COOKIE_PASSWORD as string
     },
     null,
@@ -74,11 +73,5 @@ export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
         secret: JWT_SECRET,
         resave: false, 
         saveUninitialized: false,
-        cookie: {
-            httpOnly: true,
-            secure: NODE_ENV === 'production',
-            sameSite: 'lax'
-        }
-        
     }
 )

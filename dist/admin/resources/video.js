@@ -44,7 +44,6 @@ exports.VideoResourceFeatures = [
         provider: {
             local: {
                 bucket: path_1.default.join(__dirname, "../../../uploads"),
-                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {
@@ -59,7 +58,6 @@ exports.VideoResourceFeatures = [
         provider: {
             local: {
                 bucket: path_1.default.join(__dirname, "../../../uploads"),
-                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {

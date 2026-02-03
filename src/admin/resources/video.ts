@@ -42,7 +42,6 @@ export const VideoResourceFeatures: FeatureType[] = [
         provider: {
             local: {
                 bucket: path.join(__dirname, "../../../uploads"),
-                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {
@@ -59,7 +58,6 @@ export const VideoResourceFeatures: FeatureType[] = [
         provider: {
             local: {
                 bucket: path.join(__dirname, "../../../uploads"),
-                opts: { baseUrl: '/uploads' }
             },
         },
         properties: {

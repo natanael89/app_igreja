@@ -43,9 +43,6 @@ exports.DailyPostResourceFeatures = [
         provider: {
             local: {
                 bucket: path_1.default.join(__dirname, "..", "..", "..", "uploads"),
-                opts: {
-                    baseUrl: '/uploads'
-                }
             },
         },
         properties: {

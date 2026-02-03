@@ -1,4 +1,5 @@
-import jwt, { JwtPayload, Secret, SignOptions } from 'jsonwebtoken'
+import jwt, { Secret, SignOptions } from 'jsonwebtoken'
+import { JWT_SECRET } from '../config/env'
 import "dotenv/config"
 
 interface TokenPayload {
@@ -10,7 +11,7 @@ const secret: Secret = String(process.env.JWT_SECRET)
 
 export const jwtService = {
     signToken: (payload: string | object | Buffer, expiration: string ): string => {
-        return jwt.sign(payload, secret, { expiresIn: expiration } as SignOptions)
+        return jwt.sign(payload, JWT_SECRET, { expiresIn: expiration } as SignOptions)
     },
     
     verifyToken(token: string ): TokenPayload {

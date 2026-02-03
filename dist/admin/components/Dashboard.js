@@ -51,7 +51,7 @@ const Dashboard = () => {
     return (react_1.default.createElement("section", { style: { textAlign: 'center' } },
         react_1.default.createElement(design_system_1.Box, { variant: "grey", px: "xl", bg: "white" },
             react_1.default.createElement(design_system_1.H2, { color: "success" }, "Seja bem-vindo ao Painel de Administra\u00E7\u00E3o"),
-            react_1.default.createElement(design_system_1.H2, null, currentAdmin === null || currentAdmin === void 0 ? void 0 : currentAdmin.first_name),
+            react_1.default.createElement(design_system_1.H2, null, currentAdmin?.first_name),
             react_1.default.createElement(design_system_1.Text, null, "Use o menu de navega\u00E7\u00E3o para gerenciar recursos.")),
         react_1.default.createElement(design_system_1.Table, { style: { backgroundColor: '#FFF', padding: '1.5rem' } },
             react_1.default.createElement(design_system_1.TableHead, null,

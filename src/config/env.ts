@@ -12,3 +12,4 @@ if(!process.env.DATABASE_URL){
 export const DATABASE_URL = process.env.DATABASE_URL;
 export const JWT_SECRET = process.env.JWT_SECRET || "default_secret"
 export const NODE_ENV = process.env.NODE_ENV || "development"
+export const ADMINJS_COOKIE_PASSWORD = process.env.ADMINJS_COOKIE_PASSWORD

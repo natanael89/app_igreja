@@ -8,7 +8,20 @@ import { authetenticationOptions } from "./authentication"
 import { dashboardOptions } from "./dashboard"
 import { componentLoader, Components } from "./componentLoader"
 import { locale } from "./locale"
+import { ADMINJS_COOKIE_PASSWORD, JWT_SECRET, NODE_ENV } from "../config/env"
+import { User } from "../models"
+import session from "express-session"
+import SequelizeStoreInit from "connect-session-sequelize"
 
+
+
+const SequelizeStore = SequelizeStoreInit(session.Store)
+
+const sessionStore = new SequelizeStore({
+    db: database,
+})
+
+sessionStore.sync()
 
 
 AdminJS.registerAdapter({
@@ -38,7 +51,34 @@ export const adminJs = new AdminJS({
 
 export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
     adminJs, 
-    authetenticationOptions, 
+    {
+        authenticate: async (email, password) => {
+                const user = await User.findOne({ where: { email } })
+        
+                if (user && user.role === "admin"){
+                    const matched = await bcryptjs.compare(password, user.password)
+        
+                    if(matched){
+                        return user
+                    }
+                }
+        
+                return false
+            },
+        cookieName: 'adminjs',
+        cookiePassword: ADMINJS_COOKIE_PASSWORD as string
+    },
     null,
-    { resave: false, saveUninitialized: false, secret: process.env.JWT_SECRET as string}
+    { 
+        store: sessionStore,
+        secret: ADMINJS_COOKIE_PASSWORD as string,
+        resave: false, 
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            secure: NODE_ENV === 'production',
+            sameSite: 'lax'
+        }
+        
+    }
 )

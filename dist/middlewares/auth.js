@@ -19,7 +19,7 @@ async function ensureAuth(req, res, next) {
         req.user = user;
         return next();
     }
-    catch (_a) {
+    catch {
         return res.status(401).json({ message: 'Token inválido ou expirado' });
     }
 }

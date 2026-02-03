@@ -53,7 +53,7 @@ exports.authController = {
                     email: user.email,
                 };
                 const token = jwt_Service_1.jwtService.signToken(payload, '30d');
-                return res.status(200).json(Object.assign(Object.assign({ authenticated: true }, payload), { token }));
+                return res.status(200).json({ authenticated: true, ...payload, token });
             });
         }
         catch (error) {

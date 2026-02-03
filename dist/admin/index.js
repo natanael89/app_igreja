@@ -42,10 +42,19 @@ const express_1 = __importDefault(require("@adminjs/express"));
 const AdminJSSequelize = __importStar(require("@adminjs/sequelize"));
 const database_1 = require("../database");
 const resources_1 = require("./resources");
-const authentication_1 = require("./authentication");
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const dashboard_1 = require("./dashboard");
 const componentLoader_1 = require("./componentLoader");
 const locale_1 = require("./locale");
+const env_1 = require("../config/env");
+const models_1 = require("../models");
+const express_session_1 = __importDefault(require("express-session"));
+const connect_session_sequelize_1 = __importDefault(require("connect-session-sequelize"));
+const SequelizeStore = (0, connect_session_sequelize_1.default)(express_session_1.default.Store);
+const sessionStore = new SequelizeStore({
+    db: database_1.database,
+});
+sessionStore.sync();
 adminjs_1.default.registerAdapter({
     Resource: AdminJSSequelize.Resource,
     Database: AdminJSSequelize.Database
@@ -69,5 +78,28 @@ exports.adminJs = new adminjs_1.default({
         }
     },
 });
-exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.adminJs, authentication_1.authetenticationOptions, null, { resave: false, saveUninitialized: false, secret: process.env.JWT_SECRET });
+exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.adminJs, {
+    authenticate: async (email, password) => {
+        const user = await models_1.User.findOne({ where: { email } });
+        if (user && user.role === "admin") {
+            const matched = await bcryptjs_1.default.compare(password, user.password);
+            if (matched) {
+                return user;
+            }
+        }
+        return false;
+    },
+    cookieName: 'adminjs',
+    cookiePassword: env_1.ADMINJS_COOKIE_PASSWORD
+}, null, {
+    store: sessionStore,
+    secret: env_1.ADMINJS_COOKIE_PASSWORD,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: env_1.NODE_ENV === 'production',
+        sameSite: 'lax'
+    }
+});
 //# sourceMappingURL=index.js.map

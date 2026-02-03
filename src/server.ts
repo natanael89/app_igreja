@@ -1,7 +1,6 @@
 import express from 'express'
 import { database } from './database'
 import cors from 'cors'
-import session from 'express-session'
 import { router } from './routes'
 import { ensureUploadDir } from './utils/ensureUploadDir'
 import { adminJs, adminJsRouter } from './admin'

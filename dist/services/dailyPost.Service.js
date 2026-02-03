@@ -48,8 +48,7 @@ exports.dailyPostService = {
         };
     },
     getPopularPosts: async () => {
-        var _a;
-        const results = await ((_a = DailyPost_1.DailyPost.sequelize) === null || _a === void 0 ? void 0 : _a.query(`
+        const results = await DailyPost_1.DailyPost.sequelize?.query(`
               SELECT
                 daily_posts.id,
                 daily_posts.title,
@@ -63,7 +62,7 @@ exports.dailyPostService = {
               ORDER BY likes DESC
               LIMIT 10;
             
-            `));
+            `);
         if (results) {
             const [topTen] = results;
             return topTen;

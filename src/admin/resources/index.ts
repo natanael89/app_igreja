@@ -7,6 +7,10 @@ import { UserResourceOptions } from "./user"
 
 export const adminJsResources: ResourceWithOptions[] = [
     {
+        resource: Category,
+        options: CategoryResourceOptions,
+    },
+    {
         resource: DailyPost,
         options: DailyPostResourceOptions,
         features: DailyPostResourceFeatures,
@@ -15,10 +19,6 @@ export const adminJsResources: ResourceWithOptions[] = [
         resource: Video,
         options: VideoResourceOptions,
         features: VideoResourceFeatures
-    },
-    {
-        resource: Category,
-        options: CategoryResourceOptions,
     },
     {
         resource: User,

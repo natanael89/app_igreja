@@ -8,6 +8,10 @@ const video_1 = require("./video");
 const user_1 = require("./user");
 exports.adminJsResources = [
     {
+        resource: models_1.Category,
+        options: category_1.CategoryResourceOptions,
+    },
+    {
         resource: models_1.DailyPost,
         options: dailypost_1.DailyPostResourceOptions,
         features: dailypost_1.DailyPostResourceFeatures,
@@ -16,10 +20,6 @@ exports.adminJsResources = [
         resource: models_1.Video,
         options: video_1.VideoResourceOptions,
         features: video_1.VideoResourceFeatures
-    },
-    {
-        resource: models_1.Category,
-        options: category_1.CategoryResourceOptions,
     },
     {
         resource: models_1.User,

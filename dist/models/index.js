@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Favorite = exports.Like = exports.User = exports.Video = exports.DailyPost = exports.Category = void 0;
+exports.WatchTimes = exports.Favorite = exports.Like = exports.User = exports.Video = exports.DailyPost = exports.Category = void 0;
 const Category_1 = require("./Category");
 Object.defineProperty(exports, "Category", { enumerable: true, get: function () { return Category_1.Category; } });
 const DailyPost_1 = require("./DailyPost");
@@ -14,6 +14,7 @@ Object.defineProperty(exports, "Like", { enumerable: true, get: function () { re
 const User_1 = require("./User");
 Object.defineProperty(exports, "User", { enumerable: true, get: function () { return User_1.User; } });
 const WatchTimes_1 = require("./WatchTimes");
+Object.defineProperty(exports, "WatchTimes", { enumerable: true, get: function () { return WatchTimes_1.WatchTimes; } });
 // ====================
 // RELACIONAMENTOS
 // ====================

@@ -55,4 +55,5 @@ export {
     User,
     Like,
     Favorite,
+    WatchTimes
 }

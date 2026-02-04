@@ -64,8 +64,6 @@ exports.adminJs = new adminjs_1.default({
     resources: resources_1.adminJsResources,
     rootPath: '/admin',
     componentLoader: componentLoader_1.componentLoader,
-    dashboard: dashboard_1.dashboardOptions,
-    locale: locale_1.locale,
     branding: {
         companyName: 'IgrejaAdmin',
         logo: false,
@@ -77,6 +75,8 @@ exports.adminJs = new adminjs_1.default({
             }
         }
     },
+    locale: locale_1.locale,
+    dashboard: dashboard_1.dashboardOptions,
 });
 exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.adminJs, {
     authenticate: async (email, password) => {
@@ -91,9 +91,9 @@ exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.admin
     },
     cookiePassword: env_1.ADMINJS_COOKIE_PASSWORD
 }, null, {
-    store: sessionStore,
-    secret: env_1.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: sessionStore,
+    secret: env_1.JWT_SECRET,
 });
 //# sourceMappingURL=index.js.map

@@ -4,11 +4,10 @@ import * as AdminJSSequelize from '@adminjs/sequelize'
 import { database } from "../database"
 import { adminJsResources } from "./resources"
 import bcryptjs from "bcryptjs"
-import { authetenticationOptions } from "./authentication"
 import { dashboardOptions } from "./dashboard"
 import { componentLoader, Components } from "./componentLoader"
 import { locale } from "./locale"
-import { ADMINJS_COOKIE_PASSWORD, JWT_SECRET, NODE_ENV } from "../config/env"
+import { ADMINJS_COOKIE_PASSWORD, JWT_SECRET} from "../config/env"
 import { User } from "../models"
 import session from "express-session"
 import SequelizeStoreInit from "connect-session-sequelize"
@@ -34,8 +33,6 @@ export const adminJs = new AdminJS({
     resources: adminJsResources,
     rootPath: '/admin',
     componentLoader,
-    dashboard: dashboardOptions,
-    locale: locale,
     branding: {
         companyName: 'IgrejaAdmin',
         logo: false,
@@ -47,6 +44,8 @@ export const adminJs = new AdminJS({
             }
         }
     },
+    locale: locale,
+    dashboard: dashboardOptions,
 })
 
 export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
@@ -69,9 +68,9 @@ export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
     },
     null,
     { 
-        store: sessionStore,
-        secret: JWT_SECRET,
         resave: false, 
         saveUninitialized: false,
+        store: sessionStore,
+        secret: JWT_SECRET,
     }
 )

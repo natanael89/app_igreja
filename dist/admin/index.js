@@ -48,13 +48,6 @@ const componentLoader_1 = require("./componentLoader");
 const locale_1 = require("./locale");
 const env_1 = require("../config/env");
 const models_1 = require("../models");
-const express_session_1 = __importDefault(require("express-session"));
-const connect_session_sequelize_1 = __importDefault(require("connect-session-sequelize"));
-const SequelizeStore = (0, connect_session_sequelize_1.default)(express_session_1.default.Store);
-const sessionStore = new SequelizeStore({
-    db: database_1.database,
-});
-sessionStore.sync();
 adminjs_1.default.registerAdapter({
     Resource: AdminJSSequelize.Resource,
     Database: AdminJSSequelize.Database
@@ -93,7 +86,6 @@ exports.adminJsRouter = express_1.default.buildAuthenticatedRouter(exports.admin
 }, null, {
     resave: false,
     saveUninitialized: false,
-    store: sessionStore,
-    secret: env_1.JWT_SECRET,
+    secret: env_1.ADMINJS_COOKIE_PASSWORD,
 });
 //# sourceMappingURL=index.js.map

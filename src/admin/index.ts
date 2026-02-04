@@ -9,18 +9,7 @@ import { componentLoader, Components } from "./componentLoader"
 import { locale } from "./locale"
 import { ADMINJS_COOKIE_PASSWORD, JWT_SECRET} from "../config/env"
 import { User } from "../models"
-import session from "express-session"
-import SequelizeStoreInit from "connect-session-sequelize"
 
-
-
-const SequelizeStore = SequelizeStoreInit(session.Store)
-
-const sessionStore = new SequelizeStore({
-    db: database,
-})
-
-sessionStore.sync()
 
 
 AdminJS.registerAdapter({
@@ -70,7 +59,6 @@ export const adminJsRouter = AdminJsExpress.buildAuthenticatedRouter(
     { 
         resave: false, 
         saveUninitialized: false,
-        store: sessionStore,
-        secret: JWT_SECRET,
+        secret: ADMINJS_COOKIE_PASSWORD as string,
     }
 )

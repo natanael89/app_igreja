@@ -1,7 +1,6 @@
 import { database } from "../database";
 import { DataTypes, Model, Optional } from "sequelize";
 import bcrypt from "bcryptjs"
-import { Episode } from "./Episode";
 import { Video } from "./Video";
 
 type CheckPasswordCallback = (err?: Error, isSame?: boolean) => void
@@ -15,8 +14,8 @@ interface UserAttributes {
     email: string;
     password: string;
     role: string;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export interface UserCreationAttributes extends Optional<UserAttributes, 'id' | 'role'> {}
@@ -32,9 +31,8 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public email!: string;
     public password!: string;
     public role!: string;
-    public created_at?: Date;
-    public updated_at?: Date;
-    Episodes?: Episode[];
+    public createdAt?: Date;
+    public updatedAt?: Date;
     watchedVideos?: Video[];
     static password: any;
 
@@ -61,7 +59,7 @@ User.init(
             type: DataTypes.STRING,
         },
         birth: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.DATE,
         },
         email: {
@@ -80,9 +78,6 @@ User.init(
             allowNull: false,
             type: DataTypes.STRING,
             defaultValue: 'user',
-            validate: {
-                isIn: [['admin', 'user']]
-            }
         },
     },
     {

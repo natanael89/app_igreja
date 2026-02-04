@@ -30,7 +30,7 @@ User.init({
         type: sequelize_1.DataTypes.STRING,
     },
     birth: {
-        allowNull: false,
+        allowNull: true,
         type: sequelize_1.DataTypes.DATE,
     },
     email: {
@@ -49,9 +49,6 @@ User.init({
         allowNull: false,
         type: sequelize_1.DataTypes.STRING,
         defaultValue: 'user',
-        validate: {
-            isIn: [['admin', 'user']]
-        }
     },
 }, {
     sequelize: database_1.database,

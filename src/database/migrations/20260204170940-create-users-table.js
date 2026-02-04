@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       last_name: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.STRING,
       },
       phone: {
@@ -27,12 +27,9 @@ module.exports = {
         type: Sequelize.DATE,
       },
       email: {
-        allowNull: true,
+        allowNull: false,
         unique: true,
         type: Sequelize.STRING,
-        validate: {
-           isEmail: true,
-        }
       },
       password: {
         allowNull: false,
@@ -41,7 +38,6 @@ module.exports = {
       role: {
         allowNull: false,
         type: Sequelize.STRING,
-        defaultValue: 'user'
       },
       created_at: {
         allowNull: false,

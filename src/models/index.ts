@@ -7,121 +7,52 @@ import { User } from "./User";
 import { WatchTimes } from "./WatchTimes";
 
 
-/*
-    CATEGORY = DAILY POST  
-*/
-
-Category.hasMany(DailyPost, {
-    as: 'dailyPosts',
-    foreignKey: "category_id"
-});
-
-DailyPost.belongsTo(Category, {
-    as: "categories",
-    foreignKey: "category_id"
-});
-
-/*
-    CATEGORY = VIDEO
-*/
-
-Category.hasMany(Video, {
-    as: "videos",
-    foreignKey: "category_id"
-});
-
-Video.belongsTo(Category, {
-    as: "categories",
-    foreignKey: "category_id"
-});
+// ====================
+// RELACIONAMENTOS
+// ====================
 
 
-/*
-    DAILY POST = USER (LIKES)
-*/
+// Category -> DailyPost
+Category.hasMany(DailyPost, { foreignKey: 'category_id' })
+DailyPost.belongsTo(Category, { foreignKey: 'category_id' })
+
+// Likes
 DailyPost.belongsToMany(User, {
     through: Like,
-    foreignKey: "daily_post_id",
-    otherKey: "user_id",
-    as: "likedUsers"
-});
+    foreignKey: 'daily_post_id',
+    as: 'likedUsers'
+})
 
 User.belongsToMany(DailyPost, {
     through: Like,
-    foreignKey: "user_id",
-    otherKey: "daily_post_id",
-    as: "likedDalyPosts",
+    foreignKey: 'user_id',
+    as: 'likedDailyPosts'
+})
 
-});
-
-/* DAILY POST = USER (FAVORITES) */
-
+// Favorites
 DailyPost.belongsToMany(User, {
     through: Favorite,
-    foreignKey: "daily_post_id",
-    otherKey: "user_id",
-    as: "favoritedUsers"
-});
+    foreignKey: 'daily_post_id',
+    as: 'favoritedUsers'
+})
 
 User.belongsToMany(DailyPost, {
     through: Favorite,
-    foreignKey: "user_id",
-    otherKey: "daily_post_id",
-    as: "favoriteDailyPosts"
-});
+    foreignKey: 'user_id',
+    as: 'favoriteDailyPosts'
+})
 
-DailyPost.hasMany(Favorite, {
-    as: "favorites",
-    foreignKey: "daily_post_id"
-});
-
-Favorite.belongsTo(DailyPost, {
-    as: "dailyPost",
-    foreignKey: "daily_post_id"
-});
-
-Favorite.belongsTo(User, {
-    foreignKey: "user_id",
-});
-
-User.hasMany(Favorite, {
-    foreignKey: "user_id"
-});
-
-/* VIEDO = USER (WATCH TIMES / VIEWS) */
-Video.belongsToMany(User, {
-    through: WatchTimes,
-    as: "viewers",
-    foreignKey: "video_id",
-    otherKey: "user_id"
-});
-
-User.belongsToMany(Video, {
-    through: WatchTimes,
-    as: "watchedVideos",
-    foreignKey: "user_id",
-    otherKey: "video_id"
-});
-
-Video.hasMany(WatchTimes, {
-    as: "videoViews",
-    foreignKey: "video_id",
-});
-
-WatchTimes.belongsTo(Video, {
-    foreignKey: "video_id"
-});
+WatchTimes.belongsTo(Video, { foreignKey: 'user_id' })
 
 WatchTimes.belongsTo(User, {
-    foreignKey: "user_id"
+    foreignKey: 'user_id'
 })
 
 export {
     Category,
     DailyPost,
     Video,
-    Favorite,
-    Like,
     User,
-    WatchTimes,
-};
+    Like,
+    Favorite,
+}
